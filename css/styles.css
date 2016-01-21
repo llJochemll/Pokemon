@@ -1,0 +1,23 @@
+.posAbs{
+    position: absolute;
+    top: 66px;
+    left: 72px;
+}
+
+.posRel{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.buttonN{
+    position: absolute;
+    top: 333px;
+    left: 76px;
+}
+
+.buttonP{
+    position: absolute;
+    top: 333px;
+    left: 35px;
+}
