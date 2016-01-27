@@ -3,104 +3,134 @@
 <head>
 	<meta http-equiv="content-type" content="text/html" />
 	<meta name="author" content="Jochem" />
+    <meta charset="UTF-8"> 
 
 	<title>Pokedex - home</title>
-
-    <!--Jquery-->
-    <link rel="stylesheet" href="css/jquery.mobile.min.css"/>
-	<link rel="stylesheet" href="css/styles.css"/>
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
-	<script type="text/javascript" src="js/jquery.mobile.min.js"></script>
-    <script type="text/javascript" src="js/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     
     <!--CSS-->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body>
-    <script>
-    var pokeID = 0;
-    function switchPokemon(dir){
-        var pic;
-        if (dir == 0){
-            pokeID = pokeID + 1;
+<body onload="window.resizeTo(500,500)">
+    <script type="text/javascript">
+    var selectionID = 0;
+    var selectionID = 0;
+    var menu = 0;   //0-scroll 1-list 2-information page
+    
+    function buttonPress(buttonID){
+        
+        if(buttonID == 4 && menu != 2){
+            menu = menu + 1;
+        }
+        if(buttonID == 5 && menu != 0){
+            menu = menu - 1;
+        }
+        
+        switch(menu){
+            //Scroll
+            case 0:
+                document.getElementById("info").style.left = "-5000px";
+                document.getElementById("screen").src = "afbeeldingen/list.png";
+                document.getElementById("selection").src = "afbeeldingen/selection.png";
+                
+                var selection = document.getElementById("selection");
+                if(buttonID == 0 && selectionID != 0){
+                    selectionID = selectionID - 1;
+                };
+                if(buttonID == 3 && selectionID != 9){
+                    selectionID = selectionID + 1;
+                };
+                
+                selection.style.top = ((98 + (19.5 * selectionID)).toString() + "px");
+            break;
             
-        }else{
-            pokeID = pokeID - 1;
-        }
+            //List
+            case 1:
+                document.getElementById("info").style.left = "-5000px";
+                document.getElementById("selection").src = "afbeeldingen/empty.png";
+                
+                var pic;
+                if(buttonID == 2){
+                    selectionID = selectionID + 1;    
+                };
+                if(buttonID == 1){
+                    selectionID = selectionID - 1;
+                }
         
-        if(pokeID > 9){
-            pokeID = 0;
-        }
-        if(pokeID < 0){
-            pokeID = 9;
-        }
+                if(selectionID > 9){
+                    selectionID = 0;
+                }
+                if(selectionID < 0){
+                    selectionID = 9;
+                }
         
-        pic = "afbeeldingen/pokemon" + pokeID.toString() + ".png";
-        //document.getElementById("").innerHTML = pic;
+                pic = "afbeeldingen/pokemon" + selectionID.toString() + ".png";
         
-        document.getElementById("pokemon").src = pic;
+                document.getElementById("screen").src = pic;
+            break;
+            
+            //Info
+            case 2:
+                document.getElementById("screen").src = "afbeeldingen/plain.png";
+                document.getElementById("info").style.left = "104px";
+                text = "";
+                switch(selectionID){
+                    case 0:
+                        text = "Mew (Japanese: ミュウ Myuu) is a Psychic-type Mythical and Legendary Pokémon, and is the last Pokémon in the Kanto Pokédex. Unlike any other Pokémon, it has the ability to learn every TM and HM. Its DNA was cloned to create Mewtwo. It can be only be obtained through Pokémon distribution events. Mew is a small cat-like Pokémon with large feet with three toes, blue eyes, small pointed ears and a long, skinny tail. It is covered with a layer of fine pink hair, only visible with the aid of a microscope. It has short arms with three fingers on each paw, and has small orange paw pads on the undersides of its feet. Mew has the Ability Synchronize. This ability allows it to pass on any status problem, except Sleep and Frozen, to its opponent. This ability also raises the encounter rate of Pokémon with its same nature. Additionally, it is said that Mew's DNA possesses the genetic composition of all existing Pokémon species, thus allowing it to use all known Pokémon techniques. Also, as shown in Lucario and the Mystery of Mew, it can change into any Pokémon using Transform. It changed into Meowth, Ho-Oh, Pidgeot, Pikachu, Aipom, Treecko, Taillow, Mime Jr., and Pichu. Its possession of every Pokémon's DNA also allows it to devolve Pokémon, as show in the TCG through its moves Devolution Beam and Devo Crush.Mew has also shown its ability to Levitate,create force fields, and change its form into any existing species of Pokémon. It is a very versatile and is arguably one of the most powerful Pokémon in every region.";
+                    break;
+                    case 1:
+                        text = "Mewtwo (Japanese: ミュウツー Myuutsuu) is a Psychic-type Legendary Pokémon introduced in Generation I. It was created using Mew's DNA. Mewtwo is a bipedal feline-like Pokémon. Its appearance is loosely based on Mew, with a more of a mutated humanoid look in addition to its feline traits. Its body is purple and it has three fingers on each hand. Mewtwo projects a faint purple aura when at full power. Mewtwo has an Anime/Manga exclusive form named Armored Mewtwo in the anime, and M2 Bind in the Manga. In the anime the form increases all of Mewtwo's Psychic abilities, and in the manga it allows Giovanni to control it. Mewtwo also has another form exclusive to the Pocket Monsters manga, where it takes on the DNA of a Clefairy, becoming a shorter, fatter and much stronger version of itself. Titling itself Mewthree, it started its quest of cooking the best bacon ever until Satoshi managed to calm it down with his bacon.Mewthree mangaClefairy transformed into MewthreeAfter going into a tantrum, screaming out 'This isn't even my final form!', Mewthree split back into Clefairy and Mewtwo. Mewtwo is highly adept at utilizing its Psychic powers, displaying telekinesis and telepathy as well. It utilizes it's telepathy to communicate with humans and translate the Pokémon language. It is able to Fly, block special abilities, and expunge people's recollections as optically discerned in Mewtwo Strikes Back. Mewtwo when caught has a base bliss of 0 and is verbally expressed to have the most savage heart of all Pokémon. Though Mewtwo doesn't evolve, Mewtwo has two Mega Evolutions, which appear in the Pokémon X and Y games. Mega Mewtwo Y was the first of the two to be revealed. It is exclusive to Pokémon Y Version, making its anime debut in the movie: Extremespeed Genesect: Mewtwo's Awakening. This new form drastically changes Mewtwo's appearance, moving its tail to its head, giving it a long head, and changing its eye colour, feet and hands. Mewtwo can only evolve into this form by holding the Mewtwonite Y in battle. Mega Mewtwo X, exclusive to Pokémon X Version, gains the Fighting-type upon evolution. It does not change Mewtwo's appearance as drastically, but it gives it a more armored look. Mewtwo can only evolve into this form by holding the Mewtwonite X Mega Stone in battle.";
+                    break;
+                    case 2:
+                        text = "Dialga (Japanese: ディアルガ Diaruga) is a Steel/Dragon-type Legendary Pokémon. Dialga is the Version Mascot for the game Pokémon Diamond. It is Palkia's rival. Dialga is a sauropod-like Pokémon. It is mainly dark blue with some gray metallic portions, such as its chestplate, which has a diamond in the center. It also has various light blue lines all over its body. It has a somewhat wing-like structure on its back, and a crest on its head, resembling a type of dinosaur. Dialga also has two horns on top of its head, two fang-like horns around its mouth, long claws, and a short tail.Dialga was created when Arceus hatched from its egg and created the world. Arceus tasked Dialga, Palkia, and Giratina to create time, space, and anti-matter. Dialga was worshiped as the master of time and metal, as it is a steel type. Dialga has the ability Pressure, which causes the opposing Pokémon to use twice as much PP for every successful hit. Additionally, Dialga has the ability to control time. Dialga, like many other Dragon type Pokémon, can use many different elemental attacks. It is also one of the few Pokémon that can learn the move Aura Sphere. Capturing it gives you an item called the Adamant Orb, which powers Dialga's attacks. Dialga is the only Pokémon that can learn the move Roar of Time, its signature move, aside from the special Event Pokémon Darkrai given in the Tenth Movie and in the Toys R' Us Nintendo World Tour, the Pokémon Smeargle, who can Sketch the move, Pokémon with Metronome, a Pokémon using Mirror Move immediately after Dialga uses the move, and a Level 100 special Event Arceus. ";
+                    break;
+                    case 3:
+                        text = "Palkia (Japanese: パルキア Parukia) is a Water/Dragon-type Legendary Pokémon introduced in Generation IV. Palkia is the Version Mascot for Pokémon Pearl. It is Dialga's rival. Palkia is a very large, bipedal Water/Dragon Pokémon. The majority of its body has a light pink-grey-white coloring with linear sections on its body being purple. Its arms and shoulders are covered by large armor plates, and each hand holds five nails. The round plates on its shoulders each have a large pearl in the center, representing its affiliation to Pearl. On Palkia's back are wings, which are seemingly not used for flight as Palkia appears to levitate. Palkia, along with Dialga and Giratina, was created by Arceus when it hatched from its egg. Palkia was tasked with creating space by Arceus. Palkia has the ability Pressure, which causes opponents PP usage to be doubled for every successful hit. In addition to this, Palkia has been described as having the ability to warp space creating ways for it to live and travel in a different dimension. When Palkia appears in Pokémon Pearl, it bends space and changes the looks of things around it. This effect is similar to Giratina's effect in Pokémon Platinum. It is said that Palkia and Dialga were never supposed to meet. ";
+                    break;
+                    case 4:
+                        text = "Giratina (Japanese: ギラティナ Giratina) is a Legendary Ghost/Dragon-type Pokémon. Giratina is the Version Mascot for Pokémon Platinum. It is the rival of Dialga and Palkia. Giratina's Altered Forme is a giant, dragon-like Pokémon, with an appearance similar to that of a large sauropod. It has 6 legs, gold protrusions that look like external ribs, and golden horns on its head. Its neck has five red stripes and 4 black stripes. On its back, it has a black stripe pattern that extends to its legs. It has black wings with three red thorn-like appendages called Girasols (a rare type of opal) coming out of them. Giratina's Origin Forme is more serpentine (like an amphitheater) than its Altered Forme. Its wings are now shaped like tentacles with the red thorn-like appendages sticking out at the end. Its mouth is now behind the two appendages in front of its face. They open when Giratina roars or etc. The horns on its head are still the same. Giratina in Origin Forme has five rows of golden spikes protruding out of the torso and near the tail. Five gray and red stripes are partially overlapped by these spikes. Like some Pokémon, it has a signature move, called Shadow Force, which hits the opponent without fail even if the foe uses Protect or Detect beforehand. When in its Origin Forme, it retains its phenomenal amounts of HP, like any other Pokémon that is in their alternate formes, and it focuses on more offensive moves, and less on the defensive moves. It switches its Attack stats with its Defense stats in its Origin Forme, making it a great powerhouse. It is also a vastly powerful Pokémon that can use these benefits to fit the trainer's focus on attacking. It will become Origin Forme when in the Distortion World, or when holding the Griseous Orb, which can be found in a secret part of the Distortion World that can only be entered through a portal in Turnback Cave (The portal will only open if you catch Giratina in the Distortion World) or get it before catching it. ";
+                    break;
+                    case 5:
+                        text = "Salamence (Japanese: ボーマンダ Bohmandaa) is a Dragon/Flying-type Pseudo-Legendary Pokémon introduced in Generation III. Salamence is a blue and red dragon like Pokémon with huge red wings and red eyebrows. It has large blue ears and its front and hind feet have four toes each. The top part of its tail is blue while the bottom is red. Its underbelly is a light tan color with stripes. The differences between the regular color and the shiny variant of Salamence are that it has a green body while the belly plates, and red sections have changed to orange. It is big enough that a trainer could stand on its back. Salamence can learn Dragon Claw, Flamethrower, and Hydro Pump. Salamence can also intimidate foes by lowering their Attack power. The first stage of Salamence's evolution is Bagon, which evolves into Shelgon, which evolves into Salamence. It can further evolve into Mega Salamence using its Mega Stone, the Salamencite.";
+                    break;
+                    case 6:
+                        text = "Pikachu (ピカチュウ Pikachu) is an Electric-type Pokémon introduced in Generation I. Pikachu is famous for being the most well-known and recognizable Pokémon. Over the years, Pikachu has become so popular that it serves as the Pokémon franchise mascot. It is the Version Mascot for the game Pokémon Yellow. It is also well known from the anime, where Ash Ketchum, the protagonist, owns a Pikachu. It evolves from Pichu when leveled up with high friendship and evolves into Raichu when exposed to a Thunder Stone. Pikachu are small, chubby, and incredibly cute mouse-like Pokémon. They are almost completely covered by yellow fur. They has long yellow ears that are tipped with black. A Pikachu's back has two brown stripes, and its large tail is notable for being shaped like a lightning bolt. On its cheeks are two circle-shaped red pouches used for storing electricity. They turn yellow and spark with electricity when its about to use an Electric attack such as Thunderbolt. It has also been known to generate small surges of electrical energy in anger or for protection. A female Pikachu looks almost exactly the same as a male, with the exception of her tail. A female Pikachu's tail is rounded at the end and has an inward dent, giving it the appearance of a heart. However, in earlier anime episodes and in the games prior to Generation IV, female and male Pikachus look identical. When several of these Pokémon gather, their electricity can cause lightening storms. Pikachu are usually friendly creatures that love to cuddle. They love having their tails rubbed, especially at the base. they also like being stroked. However if threatened or angered this Pokémon can be quite aggressive. If someone pulls it's tail it will try to bite. Pikachu's special ability is Static, which can cause paralysis in battle if hit by a physical move. In Pokémon Black and White's Dream World, the Trainer receives a Pikachu with the Lightningrod ability. Pikachu are capable of learning Volt Tackle, a powerful Electric-type physical move exclusive to the Pikachu family of Pokémon. Pikachu evolves into a Raichu by using a Thunder Stone. It evolves from Pichu when its happiness is maxed with the trainer in game.";
+                    break;
+                    case 7:
+                        text = "Charmander (Japanese: ヒトカゲ Hitokage) is a Fire-type Pokémon. It, along with Bulbasaur and Squirtle, is a Starter Pokémon of the Kanto region. Charmander is a small, bipedal, dinosaur-like Pokémon. Most of its body is colored orange, while its underbelly is a light yellow color. Charmander, along with all of its evolved forms, has a flame that is constantly burning on the end of their tails. As a natural ability, Charmander can produce flames inside of itself and project them from its mouth, meaning that it can breathe fire. The power of its flame attacks can be gauged by the size of the flame on its tail. Charmander is easily the most mild-mannered and well- behaved of it's evolution line. It's feelings and emotions can be read by the flame on the tip of it's tail. If it grows that means it's angry or is about to attack. Charmander is rarely found in the wild since it's a starter Pokemon. Sometimes they gather in extremely hot areas such as active volcanoes or in craggy mountains and in caves along the coast of the Sevii Islands. Charmander evolves into Charmeleon starting at level 16, and from Charmeleon, evolves into Charizard starting at level 36.";
+                    break;
+                    case 8:
+                        text = "Squirtle is a small, light-blue Pokémon with an appearance similar to that of a turtle. Like turtles, Squirtle has a shell that covers its body with holes that allow its limbs, tail, and head to be exposed. Unlike a turtle, Squirtle is ordinarily bipedal. Squirtle also has the natural ability to shoot water from its mouth, which is where the bulk of its attacks comes from. Its shell is highly sturdy, and could hide itself within its shell from physical attacks. Squirtle evolves into Wartortle starting at level 16, and from Wartortle, evolves into Blastoise starting at level 36. ";
+                    break;
+                    case 9:
+                        text = "Eevee is a small quadruped mammalian fennec fox-like creature with bushy brown fur. Its muzzle is blunt and cat-like, with a small black triangular nose. It has a fluffy cream-colored mane around its neck, and a short bushy fox-like tail with a cream-colored tip. Eevee has round deep brown eyes, long rabbit-like ears, and pink paw pads on its feet. Its paws are small with three toes and no visible claws. In its shiny form, Eevee has white fur instead of brown. Eevee as well as its evolutions, possesses mammalian traits from different types of animals. Its body structure is fox-like, but it also resembles a rabbit. Eevee is said to have an irregularly shaped genetic structure, enabling it to evolve into multiple Pokémon. Its possible moves are: Tackle, Tail Whip, Helping Hand, Sand-Attack, Growl, Quick Attack, Bite, Baton Pass, Take Down, Last Resort, and Trump Card. Eevee is an urban Pokémon and is found mainly near or even in cities. But it is possible that they live anywhere because they evolve to suit their surroundings. Eevee can be found in Kanto but is also found in Johto, Sinnoh and Unova. Eevee can have either the ability Run Away or Adaptability. Run Away is an ability that will allow the user to run from any wild Pokémon battle, negating the effects of moves that prevent running away like mean look and block. Adaptability increases the users STAB from x1.5 to x2.0. Eevee's Hidden Ability is Anticipation, which lets Eevee sense an opponent's dangerous moves. Eevee are Pokémon with unstable genetic codes. This gives them the ability to evolve into eight different evolutions triggered by the environment, time of day, or the usage of the evolutionary stones Water Stone, Thunderstone, and Fire Stone. Eevee can evolve into one of eight forms. These forms are: Jolteon by use of a Thunderstone; Flareon by use of a Fire Stone; Vaporeon by use of a Water Stone; Espeon when leveled up with high friendship during the day; Umbreon when leveled up with high friendship during the night; Leafeon when leveled up in Eterna Forest, Pinwheel Forest, Route 20 in Kalos or Petalburg Woods; Glaceon when leveled up on Route 217, Twist Mountain, Frost Cavern, or Shoal Cave; Sylveon (Fairy is a new type in Kalos) by teaching it a fairy type move while leveling up and playing with Eevee through Pokémon Amie and earning at least two affection hearts.";
+                    break;   
+                }
+                document.getElementById("info").textContent = text;
+            break;
+        }
+    }
+        
+    function onLoad(){
     }
     </script>
     
-    
-    
-    
-    <!--navbar
-     <nav class="navbar navbar-inverse">
-     <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
-            </button>
-        <a class="navbar-brand" href="#">Pokedex</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="main.html">Home</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Mythical
-                    <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="mythical/mew.html">Mew</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Legendary
-                    <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="legendary/giratina.html">Giratina</a></li>
-                        <li><a href="legendary/dialga.html">Dialga</a></li>
-                        <li><a href="legendary/palkia.html">Palkia</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                
-            </ul>
-        </div>
-    </div>
-    </nav>
-    <!--end navbar-->
-    
-    <p>
-        <img src="afbeeldingen/gameboy.png" width="305" height="500" class="posRel"/>
-        <img src="afbeeldingen/pokemon0.png" class="posAbs" id="pokemon"/>
-    </p>
-    
-    <p>
-        <img src="afbeeldingen/button.png" class="buttonN" id="pokemon" onclick="switchPokemon(0)"/>
-        <img src="afbeeldingen/button.png" class="buttonP" id="pokemon" onclick="switchPokemon(1)"/>
-    </p>
-    
+    <div id="gameboyDiv" class="gameboyDiv">
+        <img src="afbeeldingen/gameboy.png" class="gameboy"/>
+        
+        <img src="afbeeldingen/button.png" class="buttonU" id="button0" onclick="buttonPress(0)" width="8%" title="Up"/>
+        <img src="afbeeldingen/button.png" class="buttonL" id="button1" onclick="buttonPress(1)" width="8%" title="Left"/>
+        <img src="afbeeldingen/button.png" class="buttonR" id="button2" onclick="buttonPress(2)" width="8%" title="Right"/>
+        <img src="afbeeldingen/button.png" class="buttonD" id="button3" onclick="buttonPress(3)" width="8%" title="Down"/>
+        
+        <img src="afbeeldingen/button.png" class="buttonA" id="button4" onclick="buttonPress(4)" width="10%" title="Advance"/>
+        <img src="afbeeldingen/button.png" class="buttonB" id="button5" onclick="buttonPress(5)" width="10%" title="Back"/>
+        
+        <img src="afbeeldingen/list.png" class="screen" id="screen"/>
+        <img src="afbeeldingen/selection.png" class="selection" id="selection"/>
+        
+        <div class="info" id="info"></div>
+    </div>    
 </body>
 
 </html>
