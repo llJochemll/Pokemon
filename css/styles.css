@@ -4,20 +4,75 @@
     left: 72px;
 }
 
-.posRel{
+.gameboyDiv{
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 10%;
+    left: 747px;
+    height: 700px;
+    width: 426px;
+    padding: 0%;
+    margin: 0%;
 }
 
-.buttonN{
-    position: absolute;
-    top: 333px;
-    left: 76px;
+.gameboy{
+    width: 100%;
+    max-height: 100%;
 }
 
-.buttonP{
+.screen{
     position: absolute;
-    top: 333px;
-    left: 35px;
+    left: 104px;
+    top: 95px;
+    height: 199px;
+    width: 217px;
+}
+.selection{
+    position: absolute;
+    left: 104px;
+    top: 98px;
+}
+
+.info{
+    position: absolute;
+    left: -5000px;
+    top: 95px;
+    height: 199px;
+    width: 217px;
+    overflow: scroll;
+}
+
+.buttonU{
+    position: absolute;
+    left: 72px;
+    top: 430px;
+}
+
+.buttonL{
+    position: absolute;
+    left: 40px;
+    top: 460px;
+}
+
+.buttonR{
+    position: absolute;
+    left: 104px;
+    top: 460px;
+}
+
+.buttonD{
+    position: absolute;
+    left: 72px;
+    top: 490px;
+}
+
+.buttonA{
+    position: absolute;
+    left: 344px;
+    top: 435px;
+}
+
+.buttonB{
+    position: absolute;
+    left: 274px;
+    top: 465px;
 }
