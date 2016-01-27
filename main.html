@@ -11,11 +11,45 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body onload="window.resizeTo(500,500)">
+<body>
+    <div id="nav">
+        <li><a href="#" onclick="shortCut(0);">Mew</a>
+            <ul>
+                
+            </ul>
+        </li>
+        <li><a href="#" onclick="shortCut(1);">Mewtwo</a>
+            <ul>
+                
+            </ul>
+        </li>
+        <li><a href="#" onclick="shortCut(2);">Dialga</a>
+            <ul>
+                
+            </ul>
+        </li>
+        <li><a href="#" onclick="shortCut(3);">Palkia</a>
+            <ul>
+                
+            </ul>
+        </li>
+        <li><a href="#" onclick="shortCut(4);">Giratina</a>
+            <ul>
+                
+            </ul>
+        </li>
+    </div>
+    
     <script type="text/javascript">
     var selectionID = 0;
     var selectionID = 0;
     var menu = 0;   //0-scroll 1-list 2-information page
+    
+    function shortCut(pokeID){
+        menu = 1;
+        selectionID = pokeID;
+        buttonPress(-1);
+    }
     
     function buttonPress(buttonID){
         
@@ -130,7 +164,9 @@
         <img src="afbeeldingen/selection.png" class="selection" id="selection"/>
         
         <div class="info" id="info"></div>
-    </div>    
+    </div>
+    
+    <img src="afbeeldingen/background.png" class="back"/> 
 </body>
 
 </html>
