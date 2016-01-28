@@ -7,7 +7,7 @@
 .gameboyDiv{
     position: absolute;
     top: 10%;
-    left: 747px;
+    left: 500px;
     height: 700px;
     width: 426px;
     padding: 0%;
@@ -90,6 +90,10 @@
     float: left;
 }
 
+#nav li a:hover{
+    background: #999
+}
+
 #nav li a{
     width: 200px;
     line-height: 40px;
@@ -101,7 +105,7 @@
 .back{
     height: 100%;
     width: 100%;
-    position: absolute;
+    position: fixed;
     left: 0px;
     top: 0px;
     z-index: -1;

@@ -13,27 +13,27 @@
 
 <body>
     <div id="nav">
-        <li><a href="#" onclick="shortCut(0);">Mew</a>
+        <li><a href="#" onclick="shortCut(0);" onmouseover="preview(0);" onmouseout="undoShort()">Mew</a>
             <ul>
                 
             </ul>
         </li>
-        <li><a href="#" onclick="shortCut(1);">Mewtwo</a>
+        <li><a href="#" onclick="shortCut(1);" onmouseover="preview(1);" onmouseout="undoShort()">Mewtwo</a>
             <ul>
                 
             </ul>
         </li>
-        <li><a href="#" onclick="shortCut(2);">Dialga</a>
+        <li><a href="#" onclick="shortCut(2);" onmouseover="preview(2);" onmouseout="undoShort()">Dialga</a>
             <ul>
                 
             </ul>
         </li>
-        <li><a href="#" onclick="shortCut(3);">Palkia</a>
+        <li><a href="#" onclick="shortCut(3);" onmouseover="preview(3);" onmouseout="undoShort()">Palkia</a>
             <ul>
                 
             </ul>
         </li>
-        <li><a href="#" onclick="shortCut(4);">Giratina</a>
+        <li><a href="#" onclick="shortCut(4);" onmouseover="preview(4);" onmouseout="undoShort()">Giratina</a>
             <ul>
                 
             </ul>
@@ -44,11 +44,33 @@
     var selectionID = 0;
     var selectionID = 0;
     var menu = 0;   //0-scroll 1-list 2-information page
+    var prevMenu = 0;
+    var prevSelection = 0;
+    var prev = false;
+    
+    function preview(pokeID){
+        prevMenu = menu;
+        menu = 1;
+        prevSelection = selectionID;
+        selectionID = pokeID;
+        buttonPress(-1);
+        prev = true;
+    }
     
     function shortCut(pokeID){
         menu = 1;
         selectionID = pokeID;
         buttonPress(-1);
+        prev = false;
+    }
+    
+    function undoShort(){
+        if(prev){
+            menu = prevMenu;
+            selectionID = prevSelection;
+            buttonPress(-1);
+            prev = false;
+        }
     }
     
     function buttonPress(buttonID){
